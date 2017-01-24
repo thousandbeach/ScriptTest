@@ -18,15 +18,15 @@ public class Boss {
 
 	public void Magic(){
 		
-		int sum = this.mp;
-		for ( int i = 0; i <= 10; i++ ) {
-			sum -= 5;
-			if (sum > 0) {
-				Debug.Log ("魔法攻撃をした。 残りMPは" + sum);
+			if (this.mp >= 5) {
+			
+				this.mp -= 5;
+
+				Debug.Log ("魔法攻撃をした。 残りMPは" + this.mp);
 			} else { 
 				Debug.Log ("魔法攻撃をした。 MPが足りないため魔法が使えない");
 			}
-		}
+
 	}
 
 	// 防御用の関数
@@ -78,7 +78,11 @@ public class Test : MonoBehaviour {
 		// lastBoss変数の持つ、防御用のDefence関数を呼び出す
 		lastBoss.Defence(3);
 		// lastBoss変数の持つ、魔法攻撃用のMagic関数を呼び出す
-		lastBoss.Magic();
+
+		// 呼び出し側に！
+		for(int i = 0; i < 11; i++){
+			lastBoss.Magic();
+		}
 		// midBoss変数の持つ、攻撃用のAttack関数を呼び出す
 		midBoss.Attack();
 		// midBoss変数の持つ、防御用のDefence関数を呼び出す
